@@ -67,10 +67,8 @@ function generatePassword(lower, upper, number, symbol, length) {
     })
   }
 
-  const finalPassword = generatedPassword.slice(0, length)
-
-  // TODO
-  // include string randomizer
+  const password = generatedPassword.slice(0, length)
+  const finalPassword = randomizeString(password)
 
   return finalPassword
 }
@@ -88,6 +86,18 @@ function getRandomNumber() {
 }
 
 function getRandomSymbol() {
-  const symbols = '!@#$%^&*(){}[]=<>/,.'
+  const symbols = '<>!§$%&/()=?[]{}+#-.,;:_*?@'
   return symbols[Math.floor(Math.random() * symbols.length)]
+}
+
+function randomizeString(word) {
+  const finalWord = []
+  let resultWord = ''
+
+  for (let i = 0; i < word.length; i++) {
+    finalWord.push(word.charAt(Math.random() * word.length))
+    resultWord = finalWord.join('')
+  }
+
+  return resultWord
 }
